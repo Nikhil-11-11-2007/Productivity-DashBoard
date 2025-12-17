@@ -16,56 +16,98 @@ function openFeatures() {
     })
 }
 
-openFeatures()
+// openFeatures()
 
-let form = document.querySelector(".addTask form")
-let taskInput = document.querySelector(".addTask form #task-input")
-let taskDetailsInput = document.querySelector(".addTask form textarea")
-let taskCheckbox = document.querySelector(".addTask form #check")
+function todoList() {
+    let form = document.querySelector(".addTask form")
+    let taskInput = document.querySelector(".addTask form #task-input")
+    let taskDetailsInput = document.querySelector(".addTask form textarea")
+    let taskCheckbox = document.querySelector(".addTask form #check")
 
-// localStorage.clear()
-var currentTask = []
+    var currentTask = []
 
-if (localStorage.getItem("CurrentTask")) {
-    currentTask = JSON.parse(localStorage.getItem("CurrentTask"))
-} else {
-    console.log("task list is Empty");
-}
+    if (localStorage.getItem("CurrentTask")) {
+        currentTask = JSON.parse(localStorage.getItem("CurrentTask"))
+    } else {
+        console.log("task list is Empty");
+    }
 
-function renderTask() {
-    var allTask = document.querySelector(".allTask")
+    function renderTask() {
+        var allTask = document.querySelector(".allTask")
 
-    let sum = ""
-    currentTask.forEach(function (elem) {
-        sum += `<div class="task">
-                        <details>${elem.details}</details>
-                        <h5>${elem.task} <span class="${elem.imp}">imp</span></h5>
-                        <button>Mark as Completed</button>
+        let sum = ""
+        currentTask.forEach(function (elem, idx) {
+            sum += `<div class="task">
+                        <details>
+                        <summary>${elem.task} <span class="${elem.imp}">imp</span></summary>
+                        <p>${elem.details} </p>
+                        </details>
+                        
+                        <button id="${idx}">Mark as Completed</button>
                     </div>`
-    })
+        })
 
-    allTask.innerHTML = sum
-}
+        allTask.innerHTML = sum
+        localStorage.setItem("CurrentTask", JSON.stringify(currentTask))
 
-renderTask()
+        document.querySelectorAll(".task button").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                currentTask.splice(btn.id, 1)
+                renderTask()
+            })
+        })
+    }
 
-form.addEventListener("submit", function (e) {
-    e.preventDefault()
-    currentTask.push(
-        {
-            task: taskInput.value,
-            details: taskDetailsInput.value,
-            imp: taskCheckbox.checked
-        }
-    )
-    localStorage.setItem("CurrentTask", JSON.stringify(currentTask))
-    taskInput.value = ""
-    taskDetailsInput.value = ""
-    taskCheckbox.checked = ""
     renderTask()
 
-})
+    form.addEventListener("submit", function (e) {
+        e.preventDefault()
+        currentTask.push(
+            {
+                task: taskInput.value,
+                details: taskDetailsInput.value,
+                imp: taskCheckbox.checked
+            }
+        )
+        renderTask()
+        taskCheckbox.checked = false
+        taskInput.value = ""
+        taskDetailsInput = ""
 
-var markCompletedBtn = document.querySelectorAll(".task button")
+    })
 
-console.log(markCompletedBtn);
+}
+
+// todoList()
+
+function dailyPlanner() {
+    let dayPlanner = document.querySelector(".day-planner")
+
+    let dayPlaneData = JSON.parse(localStorage.getItem("dayPlaneData")) || {}
+
+    var hours = Array.from({ length: 18 }, (_, idx) => `${6 + idx} : 00 - ${7 + idx} : 00`)
+
+    let wholeDaySome = ''
+
+    hours.forEach(function (elem, idx) {
+        let savedData = dayPlaneData[idx] || ""
+
+        wholeDaySome += `<div class="day-planner-time">
+                    <p>${elem}</p>
+                    <input id="${idx}" type="text" placeholder="..." value="${savedData}">
+                </div>`
+    })
+
+    dayPlanner.innerHTML = wholeDaySome
+
+    var dayPlannerInput = document.querySelectorAll(".day-planner input")
+
+    dayPlannerInput.forEach(function (elem) {
+        elem.addEventListener("input", function () {
+            dayPlaneData[elem.id] = elem.value
+            localStorage.setItem("dayPlaneData", JSON.stringify(dayPlaneData))
+
+        })
+    })
+}
+dailyPlanner()
