@@ -269,9 +269,6 @@ details p {
     color: #391a05;
 }
 
-.daily-planner-fullpage{
-    display: block;
-}
 
 .daily-planner-fullpage h2{
     font-size: 3.8vw;
@@ -317,3 +314,42 @@ details p {
     outline: none;
     padding-top: 1.9vw;
 }
+
+
+.motivational-fullpage{
+    display: block;
+    position: relative;
+}
+
+.motivational-fullpage .motivational-container{
+    height: 30vw;
+    width: 30vw;
+    position: absolute;
+    top: 50%;
+    border-radius: 3vw;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.motivational-fullpage .motivational-container::after{
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: var(--tri1);
+    border-radius: 3vw;
+    scale: 1.2;
+    filter: blur(150px);
+    z-index: 8;
+}
+
+.motivational-fullpage .motivational-container .motivational-wrapper{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: var(--tri2);
+    z-index: 10;
+    border-radius: 2.5vw;
+}
+
+/* https://zenquotes.io/api/random */

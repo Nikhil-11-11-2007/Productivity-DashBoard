@@ -16,7 +16,7 @@ function openFeatures() {
     })
 }
 
-// openFeatures()
+openFeatures()
 
 function todoList() {
     let form = document.querySelector(".addTask form")
@@ -78,7 +78,7 @@ function todoList() {
 
 }
 
-// todoList()
+todoList()
 
 function dailyPlanner() {
     let dayPlanner = document.querySelector(".day-planner")
