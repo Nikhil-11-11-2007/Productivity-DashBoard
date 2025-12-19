@@ -111,3 +111,24 @@ function dailyPlanner() {
     })
 }
 dailyPlanner()
+
+function motivationalQuotes() {
+    let motivationQuote = document.querySelector(".motivation-2 h1")
+    let motivationAuthor = document.querySelector(".motivation-3 h2")
+
+    async function fetchQuote() {
+        let res = await fetch(
+            "https://dummyjson.com/quotes/random?tag=motivational"
+        );
+        let data = await res.json();
+        motivationQuote.innerHTML = data.quote
+        motivationAuthor.innerHTML = '-' + data.author
+
+    }
+
+    fetchQuote();
+}
+
+motivationalQuotes()
+
+

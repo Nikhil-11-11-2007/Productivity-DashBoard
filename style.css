@@ -270,11 +270,11 @@ details p {
 }
 
 
-.daily-planner-fullpage h2{
+.daily-planner-fullpage h2 {
     font-size: 3.8vw;
 }
 
-.daily-planner-fullpage .day-planner{
+.daily-planner-fullpage .day-planner {
     height: 85%;
     width: 100%;
     background-color: var(--tri2);
@@ -288,7 +288,7 @@ details p {
     justify-content: space-between;
 }
 
-.daily-planner-fullpage .day-planner .day-planner-time{
+.daily-planner-fullpage .day-planner .day-planner-time {
     display: flex;
     align-items: center;
     position: relative;
@@ -296,7 +296,7 @@ details p {
     margin-bottom: .8vw;
 }
 
-.day-planner .day-planner-time p{
+.day-planner .day-planner-time p {
     position: absolute;
     top: 12%;
     left: 2.4%;
@@ -304,7 +304,7 @@ details p {
     color: var(--tri1);
 }
 
-.day-planner .day-planner-time input{
+.day-planner .day-planner-time input {
     background-color: var(--sec);
     padding: 1.2vw 2.5vw;
     width: 100%;
@@ -316,40 +316,101 @@ details p {
 }
 
 
-.motivational-fullpage{
+.motivational-fullpage {
     display: block;
     position: relative;
 }
 
-.motivational-fullpage .motivational-container{
-    height: 30vw;
-    width: 30vw;
-    position: absolute;
-    top: 50%;
-    border-radius: 3vw;
-    left: 50%;
-    transform: translate(-50%,-50%);
+.motivation-fullpage-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.motivational-fullpage .motivational-container::after{
+.motivational-fullpage .motivational-container {
+    height: 60vh;
+    width: 80%;
+    position: relative;
+    border-radius: 3vw;
+}
+
+.motivational-fullpage .motivational-container::after {
     content: "";
     height: 100%;
     width: 100%;
     position: absolute;
-    background-color: var(--tri1);
-    border-radius: 3vw;
-    scale: 1.2;
-    filter: blur(150px);
+    background-color: var(--tri2);
+    border-radius: 3.2vw;
+    scale: 1.15;
+    filter: blur(50px);
     z-index: 8;
 }
 
-.motivational-fullpage .motivational-container .motivational-wrapper{
-    height: 100%;
+.motivational-fullpage .motivational-container .motivational-wrapper {
     width: 100%;
     position: absolute;
-    background-color: var(--tri2);
+    background-color: var(--sec);
     z-index: 10;
     border-radius: 2.5vw;
+    padding: 1vw;
+    border: 10px solid var(--tri2);
+    border-radius: 1.6vw;
+}
+
+.motivation-1 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.motivation-1 h2 {
+    padding: 1vw;
+    width: fit-content;
+    background-color: var(--tri2);
+    border-radius: 1.2vw;
+    font-size: 2vw;
+    text-shadow: 1px 5px 3px var(--sec);
+    text-align: right;
+}
+
+.motivation-2 {
+    padding: .5vw;
+    margin-top: 2vw;
+}
+
+.motivation-2 h1 {
+    font-size: 2.5vw;
+    font-weight: 700;
+    text-shadow: -3px -4px 10px var(--tri2);
+}
+
+
+.motivation-3 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 3vw;
+}
+
+.motivation-3 h2 {
+    padding: 1vw;
+    width: fit-content;
+    background-color: var(--tri2);
+    border-radius: 1.2vw;
+    font-family: cursive;
+    font-size: 2vw;
+    text-shadow: -3px 3px 3px var(--sec);
+    text-align: right;
+}
+
+.motivational-fullpage .motivational-container .motivational-wrapper img{
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    height: 5vw;
+    opacity: .3;
 }
 
 /* https://zenquotes.io/api/random */
