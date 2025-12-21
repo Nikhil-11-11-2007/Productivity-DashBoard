@@ -242,6 +242,10 @@ section.allElems {
     font-weight: 600;
 }
 
+.task button:active{
+    scale: .97;
+}
+
 .mark-imp {
     display: flex;
     align-items: center;
@@ -317,7 +321,6 @@ details p {
 
 
 .motivational-fullpage {
-    display: block;
     position: relative;
 }
 
@@ -413,4 +416,42 @@ details p {
     opacity: .3;
 }
 
-/* https://zenquotes.io/api/random */
+.pomodoro-fullpage{
+    display: block;
+    position: relative;
+}
+
+.pomodoro-fullpage h2{
+    font-size: 4vw;
+}
+
+.pomodoro-fullpage .pomo-timer{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+.pomo-timer h1{
+    font-size: 10vw;
+}
+
+.pomo-timer button{
+    background-color: var(--tri2);
+    padding: 1vw 3vw;
+    font-size: 1.5vw;
+    margin: 1vw;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 5px 5px 3px black;
+    cursor: pointer;
+    transition: all ease .2s;
+    font-weight: 700;
+}
+
+.pomo-timer button:active{
+    scale: .97;
+    box-shadow: 0px 0px 0px black;
+    opacity: .8;
+}

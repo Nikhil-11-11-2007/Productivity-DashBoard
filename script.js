@@ -123,7 +123,6 @@ function motivationalQuotes() {
         let data = await res.json();
         motivationQuote.innerHTML = data.quote
         motivationAuthor.innerHTML = '-' + data.author
-
     }
 
     fetchQuote();
