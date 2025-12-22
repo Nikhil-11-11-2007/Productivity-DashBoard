@@ -130,4 +130,62 @@ function motivationalQuotes() {
 
 motivationalQuotes()
 
+let timer = document.querySelector(".pomo-timer h1")
+let startBtn = document.querySelector(".pomo-timer .start-timer")
+let pauseBtn = document.querySelector(".pomo-timer .pause-timer")
+let resetBtn = document.querySelector(".pomo-timer .reset-timer")
 
+let isWorkSession = true
+
+let timerInterval = null
+
+let totalSeconds = 25 * 60
+
+function updateTimer() {
+    let min = Math.floor(totalSeconds / 60)
+    let sec = totalSeconds % 60
+
+    timer.innerHTML = `${String(min).padStart("2", 0)}:${String(sec).padStart("2", 0)}`
+}
+
+function startTimer() {
+    clearInterval(timerInterval)
+    if (isWorkSession) {
+        totalSeconds = 25 * 60
+        timerInterval = setInterval(function () {
+            if (totalSeconds > 0) {
+                totalSeconds--
+                updateTimer()
+            } else {
+                isWorkSession = false
+                clearInterval(timerInterval)
+            }
+        }, 1000)
+    } else {
+        totalSeconds = 5 * 60
+        timerInterval = setInterval(function () {
+            if (totalSeconds > 0) {
+                totalSeconds--
+                updateTimer()
+            } else {
+                isWorkSession = true
+                clearInterval(timerInterval)
+            }
+        }, 1000)
+    }
+}
+
+function pauseTimer() {
+    clearInterval(timerInterval)
+}
+
+function resetTimer() {
+    clearInterval(timerInterval)
+    totalSeconds = 25 * 60
+    updateTimer()
+}
+
+startBtn.addEventListener("click", startTimer)
+pauseBtn.addEventListener("click", pauseTimer)
+
+resetBtn.addEventListener("click", resetTimer)
