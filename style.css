@@ -242,7 +242,7 @@ section.allElems {
     font-weight: 600;
 }
 
-.task button:active{
+.task button:active {
     scale: .97;
 }
 
@@ -324,7 +324,7 @@ details p {
     position: relative;
 }
 
-.motivation-fullpage-container{
+.motivation-fullpage-container {
     height: 100%;
     width: 100%;
     display: flex;
@@ -408,7 +408,7 @@ details p {
     text-align: right;
 }
 
-.motivational-fullpage .motivational-container .motivational-wrapper img{
+.motivational-fullpage .motivational-container .motivational-wrapper img {
     position: absolute;
     right: 5%;
     top: 5%;
@@ -416,28 +416,27 @@ details p {
     opacity: .3;
 }
 
-.pomodoro-fullpage{
-    display: block;
+.pomodoro-fullpage {
     position: relative;
 }
 
-.pomodoro-fullpage h2{
+.pomodoro-fullpage h2 {
     font-size: 4vw;
 }
 
-.pomodoro-fullpage .pomo-timer{
+.pomodoro-fullpage .pomo-timer {
     position: absolute;
     top: 45%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     text-align: center;
 }
 
-.pomo-timer h1{
+.pomo-timer h1 {
     font-size: 10vw;
 }
 
-.pomo-timer button{
+.pomo-timer button {
     background-color: var(--tri2);
     padding: 1vw 3vw;
     font-size: 1.5vw;
@@ -450,8 +449,161 @@ details p {
     font-weight: 700;
 }
 
-.pomo-timer button:active{
+.pomo-timer button:active {
     scale: .97;
     box-shadow: 0px 0px 0px black;
     opacity: .8;
 }
+
+.pomodoro-fullpage .session {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding: 1vw 2vw;
+    font-size: 1.5vw;
+    background-color: var(--tri1);
+    border-radius: 1vw;
+}
+
+.daily-goals-fullpage {
+    display: block;
+}
+
+.daily-goals-fullpage .goals-container {
+    height: 85%;
+    width: 90%;
+    margin: 3vw 5vw;
+    background-color: var(--tri2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2vw 2vw;
+    border-radius: 2vw;
+    box-shadow: 0px 0px 40px var(--tri2);
+}
+
+.daily-goals-fullpage .goals-container .addGoal {
+    width: 35%;
+    height: 100%;
+    border-radius: 1.5vw;
+    background-color: var(--sec);
+    box-shadow: 0px 0px 20px var(--sec);
+    border: 4px solid var(--tri2);
+}
+
+.daily-goals-fullpage .goals-container .allGoal {
+    width: 62%;
+    height: 100%;
+    border-radius: 1.5vw;
+    background-color: var(--sec);
+    box-shadow: 0px 0px 20px var(--sec);
+    border: 4px solid var(--tri2);
+}
+
+.daily-goals-fullpage .goals-container .addGoal form {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5vw;
+    align-items: flex-start;
+}
+
+.goals-container .addGoal form #goal-input,
+textarea {
+    padding: .7vw 1.2vw;
+    width: 100%;
+    outline: none;
+    color: var(--sec);
+    margin-bottom: 1vw;
+    background-color: var(--pre);
+    font-size: 1.6vw;
+    border-radius: .3vw;
+    border: none;
+}
+
+.goals-container .addGoal form button {
+    padding: .6vw 1.2vw;
+    width: 100%;
+    outline: none;
+    margin-bottom: 2vw;
+    background-color: var(--tri1);
+    font-size: 1.6vw;
+    font-weight: 700;
+    border-radius: .3vw;
+    border: none;
+    transition: all ease .2s;
+    cursor: pointer;
+}
+
+/* 
+.todo-container .addTask form button {
+    padding: .6vw 1.2vw;
+    width: 100%;
+    outline: none;
+    margin-bottom: 2vw;
+    background-color: var(--tri1);
+    font-size: 1.6vw;
+    font-weight: 700;
+    border-radius: .3vw;
+    border: none;
+    transition: all ease .2s;
+    cursor: pointer;
+}
+
+.todo-container .addTask form button:active {
+    scale: .97;
+}
+
+
+.todo-list-fullpage .todo-container .allTask {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.6vw;
+    overflow: auto;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: var(--pre);
+    padding: 1vw 2vw;
+    border-radius: .8vw;
+    margin-bottom: .5vw;
+    position: relative;
+}
+
+.task summary {
+    color: var(--sec);
+    font-size: 1.5vw;
+    display: flex;
+    align-items: flex-start;
+    gap: .5vw;
+    cursor: pointer;
+}
+
+.task summary span {
+    background-color: var(--red);
+    border-radius: 4vw;
+    padding: 4px 8px;
+    font-size: .7vw;
+}
+
+.task summary span.true {
+    opacity: 1;
+}
+
+.task summary span.false {
+    opacity: 0;
+}
+
+.task button {
+    background-color: green;
+    padding: 1vw 1.5vw;
+    border-radius: 1vw;
+    border: none;
+    font-size: 1vw;
+    font-weight: 600;
+} */
