@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productivity DashBoard</title>
+    <link rel="shortcut icon" href="https://copilot.microsoft.com/th/id/BCO.6275ed90-7199-48e7-a229-6c8817b9804b.png"
+        type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,30 +15,35 @@
 
     <div id="main">
         <section class="allElems">
-            <div class="todo elem" id="0">
-                <img src="https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="">
-                <h2>To Do List</h2>
-            </div>
-            <div class="daily elem" id="1">
-                <img src="https://images.unsplash.com/photo-1678986718987-76f0b9357e0f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="">
-                <h2>Daily Planner</h2>
-            </div>
-            <div class="moto elem" id="2">
-                <img src="https://images.unsplash.com/photo-1648457147590-ef7dbec3cfc2?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="">
-                <h2>Motivation</h2>
-            </div>
-            <div class="pomo elem" id="3">
-                <img src="https://images.unsplash.com/photo-1648461409140-8435a67cf24f?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="">
-                <h2>Pomodoro Timer</h2>
-            </div>
-            <div class="goals elem" id="4">
-                <img src="https://images.unsplash.com/photo-1714911463647-c3150ce15ad1?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="">
-                <h2>Daily Goals</h2>
+            <header>
+                
+            </header>
+            <div class="all-features">
+                <div class="todo elem" id="0">
+                    <img src="https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="">
+                    <h2>To Do List</h2>
+                </div>
+                <div class="daily elem" id="1">
+                    <img src="https://images.unsplash.com/photo-1678986718987-76f0b9357e0f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="">
+                    <h2>Daily Planner</h2>
+                </div>
+                <div class="moto elem" id="2">
+                    <img src="https://images.unsplash.com/photo-1648457147590-ef7dbec3cfc2?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="">
+                    <h2>Motivation</h2>
+                </div>
+                <div class="pomo elem" id="3">
+                    <img src="https://images.unsplash.com/photo-1648461409140-8435a67cf24f?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="">
+                    <h2>Pomodoro Timer</h2>
+                </div>
+                <div class="goals elem" id="4">
+                    <img src="https://images.unsplash.com/photo-1714911463647-c3150ce15ad1?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="">
+                    <h2>Daily Goals</h2>
+                </div>
             </div>
         </section>
         <section class="fullElem todo-list-fullpage">
@@ -45,8 +52,8 @@
             <div class="todo-container">
                 <div class="addTask">
                     <form>
-                        <input id="task-input" type="text" placeholder="Enter Task">
-                        <textarea placeholder="Enter details" cols="30" rows="10"></textarea>
+                        <input required id="task-input" type="text" placeholder="Enter Task">
+                        <textarea required placeholder="Enter details" cols="30" rows="10"></textarea>
                         <div class="mark-imp">
                             <input type="checkbox" name="" id="check">
                             <label for="check">Mark as important!</label>
@@ -103,8 +110,7 @@
             <div class="goals-container">
                 <div class="addGoal">
                     <form>
-                        <input id="goal-input" type="text" placeholder="Enter Goal">
-                        <textarea placeholder="Enter Details..." cols="30" rows="10"></textarea>
+                        <textarea required placeholder="Enter Your Goal ..." cols="25" rows="2"></textarea>
                         <button>Add Goal</button>
                     </form>
                 </div>

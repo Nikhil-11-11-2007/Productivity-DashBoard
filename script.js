@@ -72,7 +72,7 @@ function todoList() {
         renderTask()
         taskCheckbox.checked = false
         taskInput.value = ""
-        taskDetailsInput = ""
+        taskDetailsInput.value = ""
 
     })
 
@@ -199,4 +199,61 @@ function pomodoroTimer() {
     pauseBtn.addEventListener("click", pauseTimer)
     resetBtn.addEventListener("click", resetTimer)
 }
- pomodoroTimer()
+
+pomodoroTimer()
+
+function dailyGoals() {
+    let form = document.querySelector(".addGoal form")
+    let goalDetailsInput = document.querySelector(".addGoal form textarea")
+
+    var currentGoal = []
+
+    if (localStorage.getItem("currentGoal")) {
+        currentGoal = JSON.parse(localStorage.getItem("currentGoal"))
+    } else {
+        console.log("goal is empty");
+    }
+
+    function renderGoal() {
+        let allGoal = document.querySelector(".allGoal")
+        let clutter = ""
+
+        currentGoal.forEach(function (elem, idx) {
+            clutter += `<div class="goal">
+                        <p>${elem.details}</p>
+                        <button id="${idx}">Mark as completed</button>
+                    </div>`
+        })
+
+        allGoal.innerHTML = clutter
+        localStorage.setItem("currentGoal", JSON.stringify(currentGoal))
+
+        document.querySelectorAll(".goal button").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                currentGoal.splice(btn.id, 1)
+                renderGoal()
+            })
+        })
+
+    }
+    renderGoal()
+    form.addEventListener("submit", function (e) {
+        e.preventDefault()
+        currentGoal.push({ details: goalDetailsInput.value })
+        renderGoal()
+        goalDetailsInput.value = ""
+    })
+}
+
+dailyGoals()
+
+let apikey = '751765e0045f4357b15105848252412'
+
+let city = "orai"
+async function weatherAPICall() {
+    let response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apikey}&q=${city}`)
+    let data = await response.json()
+    console.log(data.current.temp_c);
+}
+
+weatherAPICall()

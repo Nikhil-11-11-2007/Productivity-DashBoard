@@ -47,12 +47,25 @@ section.allElems {
     height: 100%;
     width: 100%;
     padding: 2vw;
-    padding-top: 5vw;
+    padding-top: 4vw;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     gap: 2vw;
     position: absolute;
+}
+
+header{
+    height: 40vh;
+    width: 100%;
+    background-color: var(--tri2);
+}
+
+.allElems .all-features{
+    display: flex;
+    /* flex-wrap: wrap; */
+    align-items: flex-start;
+    gap: 2vw;
 }
 
 .elem {
@@ -98,7 +111,7 @@ section.allElems {
     position: absolute;
     padding: .9vw 1.3vw;
     border-radius: .7vw;
-    background-color: var(--red);
+    background-color: var(--tri2);
     border: none;
     right: 5%;
     font-size: 1.2vw;
@@ -216,6 +229,7 @@ section.allElems {
     align-items: flex-start;
     gap: .5vw;
     cursor: pointer;
+    text-decoration: underline;
 }
 
 .task summary span {
@@ -290,6 +304,15 @@ details p {
     align-items: flex-start;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+.daily-planner-fullpage .day-planner::-webkit-scrollbar{
+    background-color: #4c270e;
+}
+
+.daily-planner-fullpage .day-planner::-webkit-scrollbar-thumb{
+    background-color: var(--pre);
+    border-radius: 10vw;
 }
 
 .daily-planner-fullpage .day-planner .day-planner-time {
@@ -466,10 +489,6 @@ details p {
     border-radius: 1vw;
 }
 
-.daily-goals-fullpage {
-    display: block;
-}
-
 .daily-goals-fullpage .goals-container {
     height: 85%;
     width: 90%;
@@ -477,6 +496,7 @@ details p {
     background-color: var(--tri2);
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: space-between;
     padding: 2vw 2vw;
     border-radius: 2vw;
@@ -484,17 +504,11 @@ details p {
 }
 
 .daily-goals-fullpage .goals-container .addGoal {
-    width: 35%;
-    height: 100%;
-    border-radius: 1.5vw;
-    background-color: var(--sec);
-    box-shadow: 0px 0px 20px var(--sec);
-    border: 4px solid var(--tri2);
-}
-
-.daily-goals-fullpage .goals-container .allGoal {
-    width: 62%;
-    height: 100%;
+    width: 90%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 1.5vw;
     background-color: var(--sec);
     box-shadow: 0px 0px 20px var(--sec);
@@ -503,18 +517,17 @@ details p {
 
 .daily-goals-fullpage .goals-container .addGoal form {
     display: flex;
-    flex-direction: column;
-    padding: 1.5vw;
-    align-items: flex-start;
+    width: 100%;
+    padding: 1vw 2vw;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.goals-container .addGoal form #goal-input,
-textarea {
-    padding: .7vw 1.2vw;
-    width: 100%;
+.goals-container .addGoal form textarea {
+    padding: .6vw 1.2vw;
+    width: 73%;
     outline: none;
     color: var(--sec);
-    margin-bottom: 1vw;
     background-color: var(--pre);
     font-size: 1.6vw;
     border-radius: .3vw;
@@ -522,10 +535,9 @@ textarea {
 }
 
 .goals-container .addGoal form button {
-    padding: .6vw 1.2vw;
-    width: 100%;
+    padding: 1.5vw 1.2vw;
+    width: 25%;
     outline: none;
-    margin-bottom: 2vw;
     background-color: var(--tri1);
     font-size: 1.6vw;
     font-weight: 700;
@@ -535,27 +547,17 @@ textarea {
     cursor: pointer;
 }
 
-/* 
-.todo-container .addTask form button {
-    padding: .6vw 1.2vw;
-    width: 100%;
-    outline: none;
-    margin-bottom: 2vw;
-    background-color: var(--tri1);
-    font-size: 1.6vw;
-    font-weight: 700;
-    border-radius: .3vw;
-    border: none;
-    transition: all ease .2s;
-    cursor: pointer;
-}
-
-.todo-container .addTask form button:active {
+.goals-container .addGoal form button:active{
     scale: .97;
 }
 
-
-.todo-list-fullpage .todo-container .allTask {
+.daily-goals-fullpage .goals-container .allGoal {
+    width: 90%;
+    height: 70%;
+    border-radius: 1.5vw;
+    background-color: var(--sec);
+    box-shadow: 0px 0px 20px var(--sec);
+    border: 4px solid var(--tri2);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -563,47 +565,40 @@ textarea {
     overflow: auto;
 }
 
-.task {
+.daily-goals-fullpage .goals-container .allGoal::-webkit-scrollbar{
+    display: none;
+}
+
+
+.goal {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     background-color: var(--pre);
-    padding: 1vw 2vw;
+    padding: 1vw 1vw;
     border-radius: .8vw;
     margin-bottom: .5vw;
     position: relative;
 }
 
-.task summary {
-    color: var(--sec);
-    font-size: 1.5vw;
-    display: flex;
-    align-items: flex-start;
-    gap: .5vw;
-    cursor: pointer;
+.goal p{
+    width: 74%;
+    font-size: 1.4vw;
+    color: var(--tri2);
 }
 
-.task summary span {
-    background-color: var(--red);
-    border-radius: 4vw;
-    padding: 4px 8px;
-    font-size: .7vw;
-}
-
-.task summary span.true {
-    opacity: 1;
-}
-
-.task summary span.false {
-    opacity: 0;
-}
-
-.task button {
-    background-color: green;
-    padding: 1vw 1.5vw;
+.goal button{
+    white-space: nowrap;
+    padding: .9vw 1.2vw;
+    background-color: var(--sec);
     border-radius: 1vw;
     border: none;
     font-size: 1vw;
-    font-weight: 600;
-} */
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.goal button:active{
+    scale: .97;
+}
