@@ -248,12 +248,37 @@ function dailyGoals() {
 dailyGoals()
 
 let apikey = '751765e0045f4357b15105848252412'
+let header1Date = document.querySelector(".header1 h1")
 
 let city = "orai"
+let data = null
 async function weatherAPICall() {
     let response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apikey}&q=${city}`)
-    let data = await response.json()
+    data = await response.json()
     console.log(data.current.temp_c);
 }
 
 weatherAPICall()
+
+function timeDate() {
+    const totaldaysofWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    let date = new Date()
+    let dayofWeek = totaldaysofWeek[date.getDay()]
+    let hours = date.getHours()
+    let min = date.getMinutes()
+    
+    if(hours > 12){
+        header1Date.innerHTML = `${dayofWeek} ${hours-12}:${String(min).padStart("2", 0)} PM`
+    }else{
+        if(hours === 12){
+            header1Date.innerHTML = `${dayofWeek} ${hours}:${String(min).padStart("2", 0)} PM`
+        }else if(hours === 0){
+            header1Date.innerHTML = `${dayofWeek} ${12}:${String(min).padStart("2", 0)} AM`
+        }
+        else{
+            header1Date.innerHTML = `${dayofWeek} ${hours}:${String(min).padStart("2", 0)} AM`
+        }
+    }
+}
+
+timeDate()

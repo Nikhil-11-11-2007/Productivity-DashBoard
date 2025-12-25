@@ -33,21 +33,14 @@ body {
 #main {
     height: 100%;
     width: 100%;
-    background-color: var(--sec);
-}
-
-nav {
-    position: fixed;
-    width: 100%;
-    height: 60px;
-    background-color: var(--tri2);
+    background-color: var(--pre);
 }
 
 section.allElems {
     height: 100%;
     width: 100%;
     padding: 2vw;
-    padding-top: 4vw;
+    padding-top: 2vw;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -55,13 +48,48 @@ section.allElems {
     position: absolute;
 }
 
-header{
+header {
     height: 40vh;
     width: 100%;
+    background-image: url(https://images.unsplash.com/photo-1717361279773-b2e7ee713d2e?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    background-position: center;
     background-color: var(--tri2);
+    display: flex;
+    align-items: center;
+    border-radius: 1vw;
+    justify-content: space-between;
+    padding: 3vw;
 }
 
-.allElems .all-features{
+header .header1 h1{
+    font-size: 5vw;
+    font-weight: 700;
+}
+
+header .header1 h4 {
+    font-size: 5vw;
+    font-weight: 500;
+}
+
+header .header2 h2 {
+    font-size: 3vw;
+    font-weight: 700;
+}
+
+header .header2 h4{
+    font-size: 1.5vw;
+    font-weight: 600;
+}
+
+header .header2 h3 {
+    font-size: 1.3vw;
+    font-weight: 500;
+    opacity: .8;
+}
+
+
+.allElems .all-features {
     display: flex;
     /* flex-wrap: wrap; */
     align-items: flex-start;
@@ -306,11 +334,11 @@ details p {
     justify-content: space-between;
 }
 
-.daily-planner-fullpage .day-planner::-webkit-scrollbar{
+.daily-planner-fullpage .day-planner::-webkit-scrollbar {
     background-color: #4c270e;
 }
 
-.daily-planner-fullpage .day-planner::-webkit-scrollbar-thumb{
+.daily-planner-fullpage .day-planner::-webkit-scrollbar-thumb {
     background-color: var(--pre);
     border-radius: 10vw;
 }
@@ -547,7 +575,7 @@ details p {
     cursor: pointer;
 }
 
-.goals-container .addGoal form button:active{
+.goals-container .addGoal form button:active {
     scale: .97;
 }
 
@@ -565,7 +593,7 @@ details p {
     overflow: auto;
 }
 
-.daily-goals-fullpage .goals-container .allGoal::-webkit-scrollbar{
+.daily-goals-fullpage .goals-container .allGoal::-webkit-scrollbar {
     display: none;
 }
 
@@ -582,13 +610,13 @@ details p {
     position: relative;
 }
 
-.goal p{
+.goal p {
     width: 74%;
     font-size: 1.4vw;
     color: var(--tri2);
 }
 
-.goal button{
+.goal button {
     white-space: nowrap;
     padding: .9vw 1.2vw;
     background-color: var(--sec);
@@ -599,6 +627,6 @@ details p {
     cursor: pointer;
 }
 
-.goal button:active{
+.goal button:active {
     scale: .97;
 }
