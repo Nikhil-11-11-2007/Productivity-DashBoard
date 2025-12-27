@@ -248,37 +248,54 @@ function dailyGoals() {
 dailyGoals()
 
 let apikey = '751765e0045f4357b15105848252412'
-let header1Date = document.querySelector(".header1 h1")
+let header1Time = document.querySelector(".header1 h1")
+let header1Date = document.querySelector(".header1 h2")
+let header2Temp = document.querySelector(".header2 h2")
+let header2Condition = document.querySelector(".header2 h4")
+let header2Weathe = document.querySelector(".header2 h4")
 
 let city = "orai"
 let data = null
 async function weatherAPICall() {
     let response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apikey}&q=${city}`)
     data = await response.json()
-    console.log(data.current.temp_c);
+    console.log(data);
+    header2Temp.innerHTML = `${data.current.temp_c} °C`
+    header2Condition.innerHTML = `${data.current.condition.text}`
 }
 
 weatherAPICall()
 
 function timeDate() {
     const totaldaysofWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
     let date = new Date()
     let dayofWeek = totaldaysofWeek[date.getDay()]
     let hours = date.getHours()
     let min = date.getMinutes()
+    let sec = date.getSeconds()
+    let datee = date.getDate()
+    let mon = months[date.getMonth()]
+    let year = date.getFullYear()
+    header1Date.innerHTML = `${datee} ${mon}, ${year}`
     
     if(hours > 12){
-        header1Date.innerHTML = `${dayofWeek} ${hours-12}:${String(min).padStart("2", 0)} PM`
+        header1Time.innerHTML = `${dayofWeek} ${hours-12}:${String(min).padStart("2", 0)}: ${String(sec).padStart("2", 0)} PM`
     }else{
         if(hours === 12){
-            header1Date.innerHTML = `${dayofWeek} ${hours}:${String(min).padStart("2", 0)} PM`
+            header1Time.innerHTML = `${dayofWeek} ${hours}:${String(min).padStart("2", 0)}: ${sec} PM`
         }else if(hours === 0){
-            header1Date.innerHTML = `${dayofWeek} ${12}:${String(min).padStart("2", 0)} AM`
+            header1Time.innerHTML = `${dayofWeek} ${12}:${String(min).padStart("2", 0)}: ${sec} AM`
         }
         else{
-            header1Date.innerHTML = `${dayofWeek} ${hours}:${String(min).padStart("2", 0)} AM`
+            header1Time.innerHTML = `${dayofWeek} ${hours}:${String(min).padStart("2", 0)}: ${sec} AM`
         }
     }
 }
 
 timeDate()
+
+setInterval(() => {
+    timeDate()
+}, 1000);

@@ -65,21 +65,29 @@ header {
 header .header1 h1{
     font-size: 5vw;
     font-weight: 700;
+    margin-bottom: 1vw;
+}
+
+header .header1 h2{
+    font-size: 2.5vw;
+    margin-left: .4vw;
+    font-weight: 500;
 }
 
 header .header1 h4 {
-    font-size: 5vw;
+    font-size: 4vw;
     font-weight: 500;
 }
 
 header .header2 h2 {
-    font-size: 3vw;
-    font-weight: 700;
+    font-size: 4vw;
+    font-family: aeonik2;
 }
 
 header .header2 h4{
-    font-size: 1.5vw;
+    font-size: 1.8vw;
     font-weight: 600;
+    margin-bottom: 2vw;
 }
 
 header .header2 h3 {
@@ -548,11 +556,11 @@ details p {
     width: 100%;
     padding: 1vw 2vw;
     justify-content: space-between;
-    align-items: center;
 }
 
 .goals-container .addGoal form textarea {
-    padding: .6vw 1.2vw;
+    padding-top: 1.5vw;
+    padding-left: 1vw;
     width: 73%;
     outline: none;
     color: var(--sec);
