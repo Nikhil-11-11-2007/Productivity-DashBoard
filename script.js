@@ -247,55 +247,88 @@ function dailyGoals() {
 
 dailyGoals()
 
-let apikey = '751765e0045f4357b15105848252412'
-let header1Time = document.querySelector(".header1 h1")
-let header1Date = document.querySelector(".header1 h2")
-let header2Temp = document.querySelector(".header2 h2")
-let header2Condition = document.querySelector(".header2 h4")
-let header2Weathe = document.querySelector(".header2 h4")
+function dateTimeWeather() {
+    const API_KEY = "751765e0045f4357b15105848252412";
+    const CITY = "orai";
 
-let city = "orai"
-let data = null
-async function weatherAPICall() {
-    let response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apikey}&q=${city}`)
-    data = await response.json()
-    console.log(data);
-    header2Temp.innerHTML = `${data.current.temp_c} °C`
-    header2Condition.innerHTML = `${data.current.condition.text}`
-}
+    /* ================= DOM CACHE ================= */
+    const dom = {
+        time: document.querySelector(".header1 h1"),
+        date: document.querySelector(".header1 h2"),
+        temp: document.querySelector(".header2 h2"),
+        condition: document.querySelector(".header2 h4"),
+        precipitation: document.querySelector(".header2 .precipitation"),
+        humidity: document.querySelector(".header2 .humidity"),
+        wind: document.querySelector(".header2 .wind"),
+        header: document.querySelector("header"),
+    };
 
-weatherAPICall()
+    /* ================= WEATHER ================= */
+    async function weatherAPICall() {
+        try {
+            const res = await fetch(
+                `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${CITY}`
+            );
+            const { current } = await res.json();
 
-function timeDate() {
-    const totaldaysofWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-    let date = new Date()
-    let dayofWeek = totaldaysofWeek[date.getDay()]
-    let hours = date.getHours()
-    let min = date.getMinutes()
-    let sec = date.getSeconds()
-    let datee = date.getDate()
-    let mon = months[date.getMonth()]
-    let year = date.getFullYear()
-    header1Date.innerHTML = `${datee} ${mon}, ${year}`
-    
-    if(hours > 12){
-        header1Time.innerHTML = `${dayofWeek} ${hours-12}:${String(min).padStart("2", 0)}: ${String(sec).padStart("2", 0)} PM`
-    }else{
-        if(hours === 12){
-            header1Time.innerHTML = `${dayofWeek} ${hours}:${String(min).padStart("2", 0)}: ${sec} PM`
-        }else if(hours === 0){
-            header1Time.innerHTML = `${dayofWeek} ${12}:${String(min).padStart("2", 0)}: ${sec} AM`
-        }
-        else{
-            header1Time.innerHTML = `${dayofWeek} ${hours}:${String(min).padStart("2", 0)}: ${sec} AM`
+            dom.temp.textContent = `${current.temp_c} °C`;
+            dom.condition.textContent = current.condition.text;
+            dom.precipitation.textContent = `Precipitation : ${current.precip_mm} mm`;
+            dom.humidity.textContent = `Humidity : ${current.humidity}%`;
+            dom.wind.textContent = `Wind : ${current.wind_kph} km/h`;
+        } catch (err) {
+            console.error("Weather API Error:", err);
         }
     }
+
+    weatherAPICall();
+
+    /* ================= TIME & DATE ================= */
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    const pad = (n) => String(n).padStart(2, "0");
+
+    function setBackground(hours) {
+        let img = "";
+
+        if (hours >= 20) {
+            img = "https://images.unsplash.com/photo-1514912885225-5c9ec8507d68";
+        } else if (hours >= 18) {
+            img = "https://images.unsplash.com/photo-1722999523044-80af4abe1ada";
+        } else if (hours >= 12) {
+            img = "https://images.unsplash.com/photo-1717361279773-b2e7ee713d2e"
+        } else if (hours >= 9) {
+            img = "https://images.unsplash.com/photo-1498354136128-58f790194fa7";
+        } else if (hours > 6) {
+            img = "https://images.unsplash.com/photo-1703359612447-9f1293138d13";
+        }
+
+        if (img) dom.header.style.backgroundImage = `url(${img})`;
+        console.log(img);
+
+    }
+
+    function timeDate() {
+        const now = new Date();
+
+        const dayName = days[now.getDay()];
+        const hours24 = now.getHours();
+        const minutes = pad(now.getMinutes());
+        const seconds = pad(now.getSeconds());
+
+        const hours12 = hours24 % 12 || 12;
+        const ampm = hours24 >= 12 ? "PM" : "AM";
+
+        dom.time.textContent = `${dayName} ${hours12}:${minutes}:${seconds} ${ampm}`;
+        dom.date.textContent = `${now.getDate()} ${months[now.getMonth()]}, ${now.getFullYear()}`;
+
+        setBackground(hours24);
+    }
+
+    timeDate();
+    setInterval(timeDate, 1000);
+
 }
 
-timeDate()
-
-setInterval(() => {
-    timeDate()
-}, 1000);
+dateTimeWeather()
