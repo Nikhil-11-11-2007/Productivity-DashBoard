@@ -13,6 +13,7 @@ function openFeatures() {
         back.addEventListener("click", function () {
             fullElemPage[back.id].style.display = "none"
         })
+
     })
 }
 
@@ -305,7 +306,6 @@ function dateTimeWeather() {
         }
 
         if (img) dom.header.style.backgroundImage = `url(${img})`;
-        console.log(img);
 
     }
 
@@ -332,3 +332,24 @@ function dateTimeWeather() {
 }
 
 dateTimeWeather()
+
+let rootElement = document.documentElement
+
+let flag = 0
+
+let theme = document.querySelector(".theme")
+theme.addEventListener("click", function () {
+    if (flag === 0) {
+        rootElement.style.setProperty('--pre', '#50390aff')
+        rootElement.style.setProperty('--sec', '#FDF7E4')
+        rootElement.style.setProperty('--tri1', '#FFE1AF')
+        rootElement.style.setProperty('--tri2', '#d7ccb7ff')
+        flag = 1
+    } else if (flag === 1) {
+        rootElement.style.setProperty('--pre', '#e4ffccff')
+        rootElement.style.setProperty('--sec', '#537D5D')
+        rootElement.style.setProperty('--tri1', '#b2b865ff')
+        rootElement.style.setProperty('--tri2', '#9EBC8A')
+        flag = 0
+    }
+})

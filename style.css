@@ -3,7 +3,7 @@
     --sec: #391a05;
     --tri1: #FEBA17;
     --tri2: #74512D;
-    --red: red;
+    --black: black;
 }
 
 @font-face {
@@ -33,8 +33,7 @@ body {
 #main {
     min-height: 110%;
     width: 100%;
-    background-color: var(--pre);
-    padding-top: 8vw;
+    background-color: var(--sec);
 }
 
 section.allElems {
@@ -50,7 +49,6 @@ section.allElems {
 
 header {
     width: 100%;
-    background-image: url(https://images.unsplash.com/photo-1717361279773-b2e7ee713d2e?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
     background-size: cover;
     background-position: center;
     display: flex;
@@ -134,10 +132,12 @@ header .header2 h3 {
 .fullElem {
     height: 100%;
     width: 100%;
+    top: 0;
     background-color: var(--sec);
     padding: 1.9vw;
     display: none;
-    position: absolute;
+    z-index: 10;
+    position: fixed;
 }
 
 .back {
@@ -266,7 +266,7 @@ header .header2 h3 {
 }
 
 .task summary span {
-    background-color: var(--red);
+    background-color: var(--tri1);
     border-radius: 4vw;
     padding: 4px 8px;
     font-size: .7vw;
@@ -281,8 +281,9 @@ header .header2 h3 {
 }
 
 .task button {
-    background-color: green;
+    background-color: var(--tri2);
     padding: 1vw 1.5vw;
+    cursor: pointer;
     border-radius: 1vw;
     border: none;
     font-size: 1vw;
@@ -317,7 +318,7 @@ details {
 }
 
 details p {
-    color: #391a05;
+    color: var(--sec);
 }
 
 
@@ -340,11 +341,11 @@ details p {
 }
 
 .daily-planner-fullpage .day-planner::-webkit-scrollbar {
-    background-color: #4c270e;
+    background-color: var(--pre);
 }
 
 .daily-planner-fullpage .day-planner::-webkit-scrollbar-thumb {
-    background-color: var(--pre);
+    background-color: var(--sec);
     border-radius: 10vw;
 }
 
@@ -375,13 +376,8 @@ details p {
     padding-top: 1.9vw;
 }
 
-
-.motivational-fullpage {
-    position: relative;
-}
-
 .motivation-fullpage-container {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
@@ -472,13 +468,6 @@ details p {
     opacity: .3;
 }
 
-.pomodoro-fullpage {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    background-color: var(--sec);
-}
-
 .pomodoro-fullpage h2 {
     font-size: 4vw;
 }
@@ -502,7 +491,7 @@ details p {
     margin: 1vw;
     border-radius: 5px;
     border: none;
-    box-shadow: 5px 5px 3px black;
+    box-shadow: 5px 5px 3px var(--black);
     cursor: pointer;
     transition: all ease .2s;
     font-weight: 700;
@@ -510,7 +499,7 @@ details p {
 
 .pomo-timer button:active {
     scale: .97;
-    box-shadow: 0px 0px 0px black;
+    box-shadow: 0px 0px 0px var(--black);
     opacity: .8;
 }
 
@@ -640,17 +629,15 @@ details p {
 }
 
 nav{
-    /* height: 6vh; */
-    position: fixed;
-    top: 0;
     width: 100%;
     padding: 1vw 2vw;
-    /* background-color: var(--tri2); */
+    padding-top: 1.8vw;
+    z-index: 9;
 }
 
 .nav-inner{
     display: flex;
-    background-color: var(--sec);
+    background-color: var(--pre);
     align-items: center;
     justify-content: space-between;
     padding: 1.5vw 2vw;
@@ -660,18 +647,21 @@ nav{
 .nav-inner h2{
     font-size: 2vw;
     font-weight: 700;
+    color: var(--sec);
 }
 
 .theme{
-    background-color: var(--pre);
+    background-color: var(--sec);
     padding: 10px;
-    border-radius: 50%;
+    border-radius: 7px;
+    cursor: pointer;
     transition: all ease .2s;
 }
 
-.theme i{
-    color: var(--sec);
-    font-size: 1.5vw;
+.theme h4{
+    color: var(--pre);
+    font-size: 1.2vw;
+    pointer-events: none;
     font-family: aeonik2;
 }
 
