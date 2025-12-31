@@ -31,20 +31,22 @@ body {
 }
 
 #main {
-    min-height: 110%;
+    min-height: 110vh;
     width: 100%;
+    /* position: relative; */
     background-color: var(--sec);
 }
 
 section.allElems {
-    height: 90%;
+    /* height: 90%;  */
+    gap: 2vw;
     width: 100%;
     padding: 0 2vw;
     padding-top: 1vw;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    position: absolute;
+    position: relative;
 }
 
 header {
@@ -58,20 +60,31 @@ header {
     padding: 2vw;
 }
 
-header .header1 h1{
+header .header1 h1 {
     font-size: 5vw;
     font-weight: 700;
     margin-bottom: 1vw;
 }
 
-header .header1 h2{
+header .header1 input {
+    background-color: transparent;
+    border: none;
+    color: var(--pre);
+    background-color: #ffffff48;
+    padding: .4vw 1vw;
+    font-size: 1vw;
+    outline: none;
+}
+
+header .header1 h2 {
     font-size: 2.5vw;
     margin-left: .4vw;
     font-weight: 500;
 }
 
 header .header1 h4 {
-    font-size: 4vw;
+    font-size: 2vw;
+    margin-top: 1vw;
     font-weight: 500;
 }
 
@@ -80,7 +93,7 @@ header .header2 h2 {
     font-family: aeonik2;
 }
 
-header .header2 h4{
+header .header2 h4 {
     font-size: 1.8vw;
     font-weight: 600;
     margin-bottom: 2vw;
@@ -95,7 +108,7 @@ header .header2 h3 {
 
 .allElems .all-features {
     display: flex;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     align-items: flex-start;
     gap: 2vw;
 }
@@ -628,14 +641,14 @@ details p {
     scale: .97;
 }
 
-nav{
+nav {
     width: 100%;
     padding: 1vw 2vw;
     padding-top: 1.8vw;
     z-index: 9;
 }
 
-.nav-inner{
+.nav-inner {
     display: flex;
     background-color: var(--pre);
     align-items: center;
@@ -644,13 +657,13 @@ nav{
     border-radius: .8vw;
 }
 
-.nav-inner h2{
+.nav-inner h2 {
     font-size: 2vw;
     font-weight: 700;
     color: var(--sec);
 }
 
-.theme{
+.theme {
     background-color: var(--sec);
     padding: 10px;
     border-radius: 7px;
@@ -658,13 +671,78 @@ nav{
     transition: all ease .2s;
 }
 
-.theme h4{
+.theme h4 {
     color: var(--pre);
     font-size: 1.2vw;
     pointer-events: none;
     font-family: aeonik2;
 }
 
-.theme:active{
+.theme:active {
     scale: .95;
+}
+
+
+@media (max-width:600px) {
+
+    header {
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        background: #000;
+        border-radius: 1vw;
+        justify-content: space-between;
+        padding: 4vw;
+    }
+
+    header .header1 h1 {
+        margin-top: 2vw;
+        font-size: 5vw;
+    }
+
+    header .header1 input {
+        padding: 1vw 2vw;
+        font-size: 3vw;
+        margin-top: 2vw;
+    }
+
+    header .header1 h2 {
+        font-size: 5vw;
+    }
+
+    header .header1 h4 {
+        font-size: 5vw;
+        margin-top: 2vw;
+        font-weight: 300;
+    }
+
+    header .header2 h2 {
+        font-size: 7vw;
+        margin-bottom: 2vw;
+    }
+
+    header .header2 h4 {
+        font-size: 4vw;
+        font-weight: 400;
+        margin-top: -2vw;
+    }
+
+    header .header2 h3 {
+        font-size: 3vw;
+        font-weight: 500;
+        margin-top: 1.5vw;
+    }
+
+    .allElems .all-features {
+        justify-content: center;
+        gap: 5vw;
+        margin-top: 3vw;
+    }
+
+    .elem {
+        height: 40vh;
+        width: 80%;
+    }
 }

@@ -250,7 +250,7 @@ dailyGoals()
 
 function dateTimeWeather() {
     const API_KEY = "751765e0045f4357b15105848252412";
-    const CITY = "orai";
+    let CITY = "orai";
 
     /* ================= DOM CACHE ================= */
     const dom = {
@@ -265,7 +265,7 @@ function dateTimeWeather() {
     };
 
     /* ================= WEATHER ================= */
-    async function weatherAPICall() {
+    async function weatherAPICall(CITY) {
         try {
             const res = await fetch(
                 `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${CITY}`
@@ -282,7 +282,23 @@ function dateTimeWeather() {
         }
     }
 
-    weatherAPICall();
+    // weatherAPICall();
+
+    let headerInput = document.querySelector(".header1 input")
+    let header1h4 = document.querySelector(".header1 h4")
+    headerInput.addEventListener("keydown", function (det) {
+
+        if (det.key === "Enter") {
+            CITY = det.target.value.trim()
+            header1h4.textContent = det.target.value
+
+            if (CITY.length > 2) {
+                weatherAPICall(CITY)
+                headerInput.value = "";
+            }
+        }
+
+    })
 
     /* ================= TIME & DATE ================= */
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -353,3 +369,4 @@ theme.addEventListener("click", function () {
         flag = 0
     }
 })
+
