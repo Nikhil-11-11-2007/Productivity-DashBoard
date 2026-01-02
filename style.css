@@ -72,6 +72,7 @@ header .header1 input {
     padding: .4vw 1vw;
     font-size: 1vw;
     outline: none;
+    text-transform: capitalize;
 }
 
 header .header1 h2 {

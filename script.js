@@ -250,7 +250,7 @@ dailyGoals()
 
 function dateTimeWeather() {
     const API_KEY = "751765e0045f4357b15105848252412";
-    let CITY = "orai";
+    let CITY = "";
 
     /* ================= DOM CACHE ================= */
     const dom = {
@@ -264,45 +264,62 @@ function dateTimeWeather() {
         header: document.querySelector("header"),
     };
 
+    const headerInput = document.querySelector(".header1 input");
+    const header1h4 = document.querySelector(".header1 h4");
+
     /* ================= WEATHER ================= */
-    async function weatherAPICall(CITY) {
+    async function weatherAPICall(city) {
         try {
             const res = await fetch(
-                `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${CITY}`
+                `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city},IN`
             );
-            const { current } = await res.json();
+
+            const data = await res.json();
+
+            // 🔴 API error handling (IMPORTANT)
+            if (data.error) {
+                throw new Error(data.error.message);
+            }
+
+            const { current, location } = data;
 
             dom.temp.textContent = `${current.temp_c} °C`;
             dom.condition.textContent = current.condition.text;
             dom.precipitation.textContent = `Precipitation : ${current.precip_mm} mm`;
             dom.humidity.textContent = `Humidity : ${current.humidity}%`;
             dom.wind.textContent = `Wind : ${current.wind_kph} km/h`;
+
+            header1h4.textContent = `${location.name}, ${location.country}`;
+
         } catch (err) {
             console.error("Weather API Error:", err);
+
+            dom.temp.textContent = `Temp : ?`;
+            dom.condition.textContent = `Condition : ?`;
+            dom.precipitation.textContent = `Precipitation : ?`;
+            dom.humidity.textContent = `Humidity : ?`;
+            dom.wind.textContent = `Wind : ?`;
+
+            header1h4.textContent = `City not found ❌`;
         }
     }
 
-    // weatherAPICall();
-
-    let headerInput = document.querySelector(".header1 input")
-    let header1h4 = document.querySelector(".header1 h4")
-    headerInput.addEventListener("keydown", function (det) {
-
-        if (det.key === "Enter") {
-            CITY = det.target.value.trim()
-            header1h4.textContent = det.target.value
+    /* ================= INPUT HANDLER ================= */
+    headerInput.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+            CITY = e.target.value.trim();
 
             if (CITY.length > 2) {
-                weatherAPICall(CITY)
-                headerInput.value = "";
+                weatherAPICall(CITY);
+                headerInput.value = ""; // input clear
             }
         }
-
-    })
+    });
 
     /* ================= TIME & DATE ================= */
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const months = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
 
     const pad = (n) => String(n).padStart(2, "0");
 
@@ -314,7 +331,7 @@ function dateTimeWeather() {
         } else if (hours >= 18) {
             img = "https://images.unsplash.com/photo-1722999523044-80af4abe1ada";
         } else if (hours >= 12) {
-            img = "https://images.unsplash.com/photo-1717361279773-b2e7ee713d2e"
+            img = "https://images.unsplash.com/photo-1717361279773-b2e7ee713d2e";
         } else if (hours >= 9) {
             img = "https://images.unsplash.com/photo-1498354136128-58f790194fa7";
         } else if (hours > 6) {
@@ -322,7 +339,6 @@ function dateTimeWeather() {
         }
 
         if (img) dom.header.style.backgroundImage = `url(${img})`;
-
     }
 
     function timeDate() {
@@ -344,29 +360,39 @@ function dateTimeWeather() {
 
     timeDate();
     setInterval(timeDate, 1000);
-
 }
 
-dateTimeWeather()
+dateTimeWeather();
 
-let rootElement = document.documentElement
 
-let flag = 0
+function themeChange() {
+    let rootElement = document.documentElement
 
-let theme = document.querySelector(".theme")
-theme.addEventListener("click", function () {
-    if (flag === 0) {
-        rootElement.style.setProperty('--pre', '#50390aff')
-        rootElement.style.setProperty('--sec', '#FDF7E4')
-        rootElement.style.setProperty('--tri1', '#FFE1AF')
-        rootElement.style.setProperty('--tri2', '#d7ccb7ff')
-        flag = 1
-    } else if (flag === 1) {
-        rootElement.style.setProperty('--pre', '#e4ffccff')
-        rootElement.style.setProperty('--sec', '#537D5D')
-        rootElement.style.setProperty('--tri1', '#b2b865ff')
-        rootElement.style.setProperty('--tri2', '#9EBC8A')
-        flag = 0
-    }
-})
+    let flag = 0
 
+    let theme = document.querySelector(".theme")
+    theme.addEventListener("click", function () {
+        if (flag === 0) {
+            rootElement.style.setProperty('--pre', '#50390aff')
+            rootElement.style.setProperty('--sec', '#FDF7E4')
+            rootElement.style.setProperty('--tri1', '#FFE1AF')
+            rootElement.style.setProperty('--tri2', '#d7ccb7ff')
+            flag = 1
+        } else if (flag === 1) {
+            rootElement.style.setProperty('--pre', '#e4ffccff')
+            rootElement.style.setProperty('--sec', '#537D5D')
+            rootElement.style.setProperty('--tri1', '#b2b865ff')
+            rootElement.style.setProperty('--tri2', '#9EBC8A')
+            flag = 2
+        }
+        else if (flag === 2) {
+            rootElement.style.setProperty('--pre', '#F8F4E1')
+            rootElement.style.setProperty('--sec', '#391a05')
+            rootElement.style.setProperty('--tri1', '#FEBA17')
+            rootElement.style.setProperty('--tri2', '#74512D')
+            flag = 0
+        }
+    })
+}
+
+themeChange()
