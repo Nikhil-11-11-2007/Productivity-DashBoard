@@ -117,15 +117,23 @@ header .header2 h3 {
     border-radius: .5vw;
     overflow: hidden;
     position: relative;
+    flex-wrap: wrap;
     transition: all ease 0.25s;
     cursor: pointer;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+    transition: all linear .2s;
+}
+
+.elem:hover{
+    scale: 1.1;
+    box-shadow: 0 0 20px var(--pre);
 }
 
 .elem img {
     height: 100%;
     width: 100%;
     object-fit: cover;
+    object-position: center;
 }
 
 .elem h2 {
@@ -133,6 +141,7 @@ header .header2 h3 {
     bottom: 4%;
     font-weight: 400;
     font-size: 1.6vw;
+    color: var(--black);
     right: 5%;
 }
 
@@ -487,7 +496,7 @@ details p {
 
 .pomodoro-fullpage .pomo-timer {
     position: absolute;
-    top: 45%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
